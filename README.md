@@ -20,3 +20,13 @@ GET CALL RESPONSE EXAMPLE :
 ![image](https://user-images.githubusercontent.com/65604476/151679154-8a419e08-c61d-47e8-984c-a5a816b0f50b.png)
 
 Test cases, common exception handler and loggers with aop have been added accordingly
+
+SAMPLE FILE DATA USED FOR TESTING : 
+
+{"id":"scsmbstgra", "state":"STARTED", "type":"APPLICATION_LOG", "host":"12345", "timestamp":1491377495212}
+{"id":"scsmbstgrb", "state":"STARTED", "timestamp":1491377495213}
+{"id":"scsmbstgrc", "state":"FINISHED", "timestamp":1491377495218}
+{"id":"scsmbstgra", "state":"FINISHED", "type":"APPLICATION_LOG", "host":"12345", "timestamp":1491377495217}
+{"id":"scsmbstgrc", "state":"STARTED", "timestamp":1491377495210}
+{"id":"scsmbstgrb", "state":"FINISHED", "timestamp":1491377495216}
+
