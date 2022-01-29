@@ -18,19 +18,28 @@ public class LogUtils {
 	}
 
 	public static Double calculateDurationByState(LogData logData, List<LogData> logsData) {
-		State state = State.getStateName(logData.getState());
-		if (Objects.nonNull(state)) {
-			Long timeStamp = logData.getTimestamp();
-			Optional<LogData> logDta = org.apache.commons.collections4.CollectionUtils.emptyIfNull(logsData).stream()
-					.filter(log -> log.getId().equals(logData.getId()) && log.getState().equals(state.name()))
-					.findFirst();
+		Double eventDuration = null;
+		if (logData.getState().equals(State.STARTED.name())) {
+			Long startTimestamp = logData.getTimestamp();
+			Optional<LogData> logDta = getLogData(logData, logsData, State.FINISHED);
 			if (logDta.isPresent()) {
-				Long difference = logDta.get().getTimestamp();
-				return (double) (timeStamp - difference);
+				Long endTimestamp = logDta.get().getTimestamp();
+				eventDuration = (double) (endTimestamp - startTimestamp);
+			}
+		} else if (logData.getState().equals(State.FINISHED.name())) {
+			Long endTimestamp = logData.getTimestamp();
+			Optional<LogData> logDta = getLogData(logData, logsData, State.STARTED);
+			if (logDta.isPresent()) {
+				Long startTimestamp = logDta.get().getTimestamp();
+				eventDuration = (double) (endTimestamp - startTimestamp);
 			}
 		}
+		return eventDuration;
+	}
 
-		return null;
+	private static Optional<LogData> getLogData(LogData logData, List<LogData> logsData, State state) {
+		return logsData.stream()
+				.filter(log -> log.getId().equals(logData.getId()) && log.getState().equals(state.name())).findFirst();
 	}
 
 }
