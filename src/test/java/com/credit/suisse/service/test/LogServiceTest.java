@@ -1,8 +1,6 @@
 package com.credit.suisse.service.test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,7 +10,6 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.credit.suisse.dao.LogRepository;
-import com.credit.suisse.dto.LogData;
 import com.credit.suisse.dto.LogDataResponse;
 import com.credit.suisse.entity.LogEntity;
 import com.credit.suisse.exception.DatabaseException;

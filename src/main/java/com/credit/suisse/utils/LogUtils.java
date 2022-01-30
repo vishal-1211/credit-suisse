@@ -1,7 +1,6 @@
 package com.credit.suisse.utils;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import com.credit.suisse.dto.LogData;
